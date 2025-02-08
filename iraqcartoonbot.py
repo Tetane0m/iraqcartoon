@@ -2,7 +2,7 @@ import os
 from telegram import Update, InlineKeyboardMarkup, InlineKeyboardButton
 from telegram.ext import Application, CommandHandler, CallbackQueryHandler
 
-TOKEN = "7540969814:AAGSNZ900wJW-LZEns7yPDDz8X0db7GN12w"
+TOKEN = ":AAGSNZ900wJW-LZEns7yPDDz8X0db7GN12w"
 
 
 # دالة البدء
