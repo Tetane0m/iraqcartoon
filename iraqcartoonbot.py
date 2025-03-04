@@ -2,7 +2,7 @@ import os
 from telegram import Update, InlineKeyboardMarkup, InlineKeyboardButton
 from telegram.ext import Application, CommandHandler, CallbackQueryHandler
 
-# TOKEN = "7540969814:AAGSNZ900wJW-LZEns7yPDDz8X0db7GN12w"
+TOKEN = "7540969814:AAGSNZ900wJW-LZEns7yPDDz8X0db7GN12w"
 
 
 # دالة البدء
@@ -48,15 +48,6 @@ SOCIAL_MEDIA = {
     "YouTube": "https://youtube.com/example"
 }
 
-CONTACT_BUTTONS = [
-    [InlineKeyboardButton("📞 الهاتف", callback_data='contact_phone')],
-    [InlineKeyboardButton("📧 البريد الإلكتروني", callback_data='contact_email')],
-    [InlineKeyboardButton("📍 العنوان", callback_data='contact_address')],
-    [InlineKeyboardButton("💬 واتساب", callback_data='contact_whatsapp')],
-    [InlineKeyboardButton("📲 تيليجرام", callback_data='contact_telegram')],
-    [InlineKeyboardButton("🌐 الموقع الإلكتروني", callback_data='contact_website')]
-]
-
 
 # التعامل مع الضغط على الأزرار
 async def button_click(update: Update, context):
@@ -74,27 +65,146 @@ async def button_click(update: Update, context):
         await query.message.reply_text("🏆 **المسابقات القادمة:**\n" + "\n".join(COMPETITIONS))
     elif data == "achievements":
         await query.message.reply_text("🌟 **إنجازاتنا:**\n" + "\n".join(ACHIEVEMENTS))
+
     elif data == "social_media":
-        text = "🌍 **وسائل التواصل الاجتماعي:**\n"
-        for platform, url in SOCIAL_MEDIA.items():
-            text += f"[{platform}]({url})\n"
-        await query.message.reply_text(text, parse_mode="Markdown")
+        # روابط وسائل التواصل الاجتماعي
+        facebook_link = "https://www.facebook.com/iraqcartoon"
+        twitter_link = "https://twitter.com/iraqcartoon"
+        instagram_link = "https://www.instagram.com/iraqcartoon"
+        # youtube_link = "https://www.youtube.com/@iraqcartoon"
+        # linkedin_link = "https://www.linkedin.com/company/iraqcartoon"
+        photo_url = "photos/site.jpg"  # استبدل برابط الصورة المناسبة
+        # النص المدمج مع الروابط
+        caption = (
+            "🌍 **تابعنا على وسائل التواصل الاجتماعي!**\n"
+            "📲 كن جزءًا من عائلتنا الرقمية وابقَ على اطلاع دائم بأحدث الأخبار، الفعاليات، والعروض الحصرية! 🚀✨\n\n\n"
+
+            "📘 **فيسبوك - عالمنا بين يديك!**\n"
+            "🎭 تابع آخر التحديثات والفعاليات مباشرة على صفحتنا.\n"
+            f"🔗 **انضم إلينا الآن:** [اضغط هنا]({facebook_link})\n\n\n"
+
+            "🐦 **تويتر (إكس) - كن في قلب الحدث!**\n"
+            "📰 تابعنا لتكون أول من يعرف عن أحدث الأخبار والتحديثات الفورية.\n"
+            f"🔗 **تابعنا على تويتر:** [اضغط هنا]({twitter_link})\n\n\n"
+
+            "📸 **إنستجرام - لحظات ملهمة، صور مذهلة!**\n"
+            "📷 استمتع بأجمل اللقطات وتفاعل مع محتوى حصري يوميًا.\n"
+            f"🔗 **اكتشف عالمنا البصري:** [اضغط هنا]({instagram_link})\n\n\n")
+            # "▶️ **يوتيوب:**\n"
+            # f"🔗 اشترك في قناتنا على يوتيوب: [اضغط هنا]({youtube_link})\n\n\n"
+            # "💼 **لينكدإن:**\n"
+            # f"🔗 تابعنا على لينكدإن: [اضغط هنا]({linkedin_link})\n\n\n")
+
+        # إرسال الرسالة مع الصورة
+        await query.message.reply_photo(photo=photo_url, caption=caption, parse_mode="Markdown")
+
+    #     contact
     elif data == "contact":
-        reply_markup = InlineKeyboardMarkup(CONTACT_BUTTONS)
-        await query.message.reply_text("📞 **وسائل التواصل**\nاختر طريقة التواصل المناسبة لك:",
-                                       reply_markup=reply_markup)
-    elif data == "contact_phone":
-        await query.message.reply_text("📱 هاتف: +964 770 123 4567")
-    elif data == "contact_email":
-        await query.message.reply_text("✉️ البريد: info@example.com")
-    elif data == "contact_address":
-        await query.message.reply_text("📍 العنوان: بغداد، شارع الفن، بناية 12")
-    elif data == "contact_whatsapp":
-        await query.message.reply_text("💬 واتساب: https://wa.me/9647701234567")
-    elif data == "contact_telegram":
-        await query.message.reply_text("📲 تيليجرام: https://t.me/example")
-    elif data == "contact_website":
-        await query.message.reply_text("🌐 الموقع الإلكتروني: https://example.com")
+        # البيانات الخاصة بكل قسم
+        phone_number = "+9647701409810"
+        whatsapp_link = f"https://wa.me/9647701409810"
+        telegram_link = "https://t.me/iraqcartoon"
+        website_link = "https://iraqevents.site"
+        location_link = "https://maps.app.goo.gl/xwUb2YuVBQ3H6LcZA"
+        email = "info@iraqcartoon.iq"
+
+        photo_url = "photos/whatsapp.jpg"  # استبدل برابط الصورة المناسبة
+
+        # النص المدمج مع الروابط
+        caption = (
+            "📱 **هاتفنا:**\n"
+            f"يمكنك الاتصال بنا مباشرة على الرقم التالي:\n اضغط للاتصال{phone_number}\n\n\n"
+
+            "✉️ **البريد الإلكتروني:**\n"
+            f"يمكنك مراسلتنا عبر البريد الإلكتروني: {email}\n\n\n"
+
+            "📍 **العنوان:**\n"
+            "بغداد، زيونة، شارع الربيعي,مجاور جامع القزاز\n"
+            f"📌 **موقعنا على الخريطة:** {location_link}\n\n\n"
+
+            "💬 **تواصل معنا على واتساب!**\n"
+            f"📱 هل لديك استفسار؟ نحن هنا لمساعدتك! يمكنك مراسلتنا مباشرة عبر واتساب.\n"
+            f"🔗 **رابط واتساب:** [اضغط هنا]({whatsapp_link})\n\n\n"
+
+            "📢 **انضم إلينا على تيليجرام!**\n"
+            "📲 كن على اطلاع دائم بأحدث الفعاليات والأخبار.\n"
+            "تابع قناتنا الرسمية وكن جزءًا من مجتمعنا. 🚀\n"
+            f"🔗 **رابط القناة:** [اضغط هنا]({telegram_link})\n\n\n"
+
+            "🔗 **مرحبًا بك في منصتنا!**\n"
+            "🌐 اكتشف جميع الفعاليات والأنشطة المميزة في العراق عبر موقعنا الإلكتروني.\n"
+            "لا تفوّت أي حدث مهم!\n"
+            f"📲 قم بزيارتنا الآن: [اضغط هنا]({website_link})\n\n\n"
+        )
+
+        # إرسال الرسالة مع الصورة
+        await query.message.reply_photo(photo=photo_url, caption=caption, parse_mode="Markdown")
+
+    # elif data == "contact_phone":
+    #     phone_number = "+9647701234567"
+    #     photo_url = "photos/phone.jpg"  # استبدل برابط صورة مناسبة
+    #     caption = (
+    #         "📱 **هاتفنا:**\n"
+    #         "يمكنك الاتصال بنا مباشرة على الرقم التالي:\n"
+    #         "[اضغط للاتصال]\n\n"
+    #         f"[{phone_number}]\n\n"
+    #         "لا تتردد في الاتصال بنا إذا كان لديك أي استفسار."
+    #     )
+    #     await query.message.reply_photo(photo=photo_url, caption=caption, parse_mode="Markdown")
+    #
+    # elif data == "contact_email":
+    #     email = "info@iraqcartoon.iq"
+    #     photo_url = "photos/email.jpg"  # استبدل برابط صورة مناسبة
+    #     caption = (
+    #         "✉️ **البريد الإلكتروني:**\n"
+    #         f"يمكنك مراسلتنا عبر البريد الإلكتروني: {email}\n\n"
+    #         "نحن هنا للإجابة على استفساراتك ومساعدتك في أي وقت."
+    #     )
+    #     await query.message.reply_photo(photo=photo_url, caption=caption, parse_mode="Markdown")
+    #
+    # elif data == "contact_address":
+    #     location_link = "https://maps.app.goo.gl/xwUb2YuVBQ3H6LcZA"
+    #     photo_url = "photos/maps.jpg"  # استبدل برابط صورة الموقع أو شعار مؤسستك
+    #     caption = (
+    #     "📍 **العنوان:**\n"
+    #     "بغداد، زيونة، شارع الربيعي\n"
+    #     "مجاور جامع القزاز\n\n"
+    #     "📌 **موقعنا على الخريطة:**\n" + location_link
+    #     )
+    #     await query.message.reply_photo(photo=photo_url, caption=caption, parse_mode="Markdown")
+    #
+    # elif data == "contact_whatsapp":
+    #     whatsapp_link = f"https://wa.me/9647701409810?"
+    #     photo_url = "photos/whatsapp.jpg"  # استبدل برابط الصورة الفعلي
+    #     caption = (
+    #             "💬 **تواصل معنا على واتساب!**\n\n"
+    #             "📱 هل لديك استفسار؟ نحن هنا لمساعدتك! يمكنك مراسلتنا مباشرة عبر واتساب.\n\n"
+    #             "🔗 **رابط واتساب:** [اضغط هنا](%s)" % whatsapp_link
+    #     )
+    #     await query.message.reply_photo(photo=photo_url, caption=caption, parse_mode="Markdown")
+    #
+    # elif data == "contact_telegram":
+    #     telegram_link = "https://t.me/iraqcartoon"
+    #     photo_url = "photos/tg_ch.jpg"  # استبدل برابط الصورة الفعلي
+    #     caption = (
+    #             "📢 **انضم إلينا على تيليجرام!**\n\n"
+    #             "📲 كن على اطلاع دائم بأحدث الفعاليات والأخبار.\n"
+    #             "تابع قناتنا الرسمية وكن جزءًا من مجتمعنا. 🚀\n\n"
+    #             "🔗 **رابط القناة:** [اضغط هنا](%s)" % telegram_link
+    #     )
+    #     await query.message.reply_photo(photo=photo_url, caption=caption, parse_mode="Markdown")
+    #
+    #
+    # elif data == "contact_website":
+    #     website_link = "https://iraqevents.site"
+    #     photo_url = "photos/site.jpg"  # استبدل برابط الصورة الفعلي
+    #     caption = (
+    #             "🔗 **مرحبًا بك في منصتنا!**\n\n"
+    #             "🌐 اكتشف جميع الفعاليات والأنشطة المميزة في العراق عبر موقعنا الإلكتروني.\n"
+    #             "لا تفوّت أي حدث مهم!\n\n"
+    #             "📲 قم بزيارتنا الآن: [اضغط هنا](%s)" % website_link
+    #     )
+    #     await query.message.reply_photo(photo=photo_url, caption=caption, parse_mode="Markdown")
 
 
 def main():
