@@ -73,7 +73,7 @@ async def button_click(update: Update, context):
         instagram_link = "https://www.instagram.com/iraqcartoon"
         # youtube_link = "https://www.youtube.com/@iraqcartoon"
         # linkedin_link = "https://www.linkedin.com/company/iraqcartoon"
-        photo_url = "photos/site.jpg"  # استبدل برابط الصورة المناسبة
+        photo_url = "photos/social.jpg"  # استبدل برابط الصورة المناسبة
         # النص المدمج مع الروابط
         caption = (
             "🌍 **تابعنا على وسائل التواصل الاجتماعي!**\n"
@@ -108,7 +108,7 @@ async def button_click(update: Update, context):
         location_link = "https://maps.app.goo.gl/xwUb2YuVBQ3H6LcZA"
         email = "info@iraqcartoon.iq"
 
-        photo_url = "photos/whatsapp.jpg"  # استبدل برابط الصورة المناسبة
+        photo_url = "photos/contact.jpg"  # استبدل برابط الصورة المناسبة
 
         # النص المدمج مع الروابط
         caption = (
